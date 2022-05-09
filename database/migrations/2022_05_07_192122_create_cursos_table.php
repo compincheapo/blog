@@ -17,6 +17,7 @@ class CreateCursosTable extends Migration
             $table->id(); //Se crea un id tipo integer grande, unsigned y autoincremental.
             $table->string('name');
             $table->text('description');
+            $table->text('category');
             $table->timestamps();  //created_at updated_at
         });
     }

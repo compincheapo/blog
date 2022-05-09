@@ -13,9 +13,9 @@ class CambiarPropiedadesToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('name', 50)->change();
-        });
+        // Schema::table('users', function (Blueprint $table) {
+        //     $table->string('name', 50)->nullable()->change();
+        // });
     }
 
     /**
@@ -25,8 +25,8 @@ class CambiarPropiedadesToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('name', 250)->change();
-        });
+        // Schema::table('users', function (Blueprint $table) {
+        //     $table->string('name', 250)->nullable(false)->change();
+        // });
     }
 }
