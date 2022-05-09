@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable
 {
@@ -41,4 +42,39 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //Mutadores y Accesores ahora.
+
+    //Convertir 'name' a minuscula antes de ir a la BD (Mutador, set).
+    //Obtener 'name' de la BD y convertir (Accesor, get).
+    
+    protected function name(): Attribute{   
+        return new Attribute(
+            // get: function($value){
+            //     return ucwords($value);
+            // }
+            
+            get: fn($value) => ucwords($value) //Nueva convencion (funcion flecha).
+            ,
+            // set: function($value){          
+            //     return strtolower($value);      //Funcion de php 'strtolower()'
+            //}
+            set: fn($value) => strtolower($value)
+            
+
+            
+        );
+        
+    }
+
+
+    //Mutadores y Accesores antes.
+    
+    // public function getNameAttribute($value){
+    //     return ucwords($value);
+    // }
+
+    // public function setNameAttribute($value){
+    //     $this->attributes['name'] = strtolower($value);
+    // }
 }
