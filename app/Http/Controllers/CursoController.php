@@ -18,11 +18,21 @@ class CursoController extends Controller
     }
 
     public function store(Request $request ){
+
+        // Validamos antes de crear el objeto, tomar los valores y almacenar en BD.
+
+        $request->validate([            
+            'name' => 'required|max:10',
+            'description' => 'required',
+            'category' => 'required'
+        ]);
+
         $curso = new Curso();
 
         $curso->name = $request->name;
         $curso->description = $request->description;
         $curso->category = $request->category;
+
 
         $curso->save();
 
@@ -40,6 +50,13 @@ class CursoController extends Controller
     }
 
     public function update(Request $request, Curso $curso){
+
+        $request->validate([            
+            'name' => 'required',
+            'description' => 'required',
+            'category' => 'required'
+        ]);
+
         $curso->name = $request->name;
         $curso->description = $request->description;
         $curso->category = $request->category;
