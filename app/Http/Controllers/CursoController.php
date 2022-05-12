@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Curso;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreCurso;
 
 class CursoController extends Controller
 {
@@ -17,15 +18,9 @@ class CursoController extends Controller
         return view('cursos.create');
     }
 
-    public function store(Request $request ){
+    public function store(StoreCurso $request ){
 
-        // Validamos antes de crear el objeto, tomar los valores y almacenar en BD.
-
-        $request->validate([            
-            'name' => 'required|max:10',
-            'description' => 'required',
-            'category' => 'required'
-        ]);
+        // StoreCurso valida al recibir el fomulario en $request.
 
         $curso = new Curso();
 
