@@ -16,6 +16,7 @@ class CreateCursosTable extends Migration
         Schema::create('cursos', function (Blueprint $table) { //Blueprint facilita la creación de tablas.
             $table->id(); //Se crea un id tipo integer grande, unsigned y autoincremental.
             $table->string('name');
+            $table->string('slug');
             $table->text('description');
             $table->text('category');
             $table->timestamps();  //created_at updated_at
